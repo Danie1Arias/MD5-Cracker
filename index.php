@@ -13,10 +13,10 @@ Debug output:
             print "\n";
             $goodtext = "Not found";
             if (isset($_GET['md5'])) {
-                $time_pre = microtime(true);
-                $hash_md5 = $_GET['md5'];
+                $timePre = microtime(true);
+                $hashMD5 = $_GET['md5'];
                 $digits = "0123456789";
-                $show_tries = 15;
+                $showTries = 15;
                 $counter = 1;
 
                 for ($i=0; $i < strlen($digits); $i++) {
@@ -34,14 +34,14 @@ Debug output:
                                 $try = $digit1.$digit2.$digit3.$digit4;
                                 $check = hash('md5', $try);
 
-                                if ( $check == $hash_md5 ) {
+                                if ( $check == $hashMD5 ) {
                                     $goodtext = $try;
                                     break; 
                                 }
 
-                                if ( $show_tries > 0 ) {
+                                if ( $showTries > 0 ) {
                                     print "$check  $try\n";
-                                    $show_tries = $show_tries - 1;
+                                    $showTries = $showTries - 1;
                                 }
 
                                 $counter = $counter + 1;
@@ -50,9 +50,9 @@ Debug output:
                     }
                 }
 
-                $time_post = microtime(true);
+                $timePost = microtime(true);
                 print "Total checks: " . $counter . "\n";
-                print "Elapsed time: " . $time_post-$time_pre . "\n";
+                print "Elapsed time: " . $timePost-$timePre . "\n";
             }
         ?>
     </pre>
